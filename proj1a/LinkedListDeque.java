@@ -1,5 +1,5 @@
 public class LinkedListDeque<T> {
-    public class Node<BleepBlorp> {
+    public class Node<T> {
         public T item;
         public Node pre;
         public Node next;
@@ -91,6 +91,20 @@ public class LinkedListDeque<T> {
     }
 
     public T get(int index){
+        if (index > this.size-1){
+            System.out.println("index out of range");
+            return null;
+        } else{
+            Node temp = setinel.next;
+            while(index != 0){
+                temp = temp.next;
+                index -= 1;
+            }
+            return (T) temp.item;
+        }
+    }
+
+    public T getRecursive(int index){
         if (index > this.size-1){
             System.out.println("index out of range");
             return null;
