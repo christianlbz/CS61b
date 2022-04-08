@@ -13,17 +13,14 @@ public class LinkedListDeque<T> {
 
     private Node setinel = new Node(null, null, null);
     private int size = 0;
-    public LinkedListDeque(T val){
-        setinel.next = new Node(val, setinel, setinel);
-        this.size += 1;
-    }
 
     public LinkedListDeque(){
-
+        setinel.pre = setinel;
+        setinel.next = setinel;
     }
 
     public void addFirst(T item){
-        if (setinel.next == null){
+        if (setinel.next.item == null){
             Node temp = new Node(item, setinel, setinel);
             setinel.next = temp;
             setinel.pre = temp;
@@ -36,7 +33,7 @@ public class LinkedListDeque<T> {
     }
 
     public void addLast(T item){
-        if (setinel.pre == null){
+        if (setinel.pre.item == null){
             Node temp = new Node(item, setinel, setinel);
             setinel.pre = temp;
             setinel.next = temp;
@@ -57,16 +54,16 @@ public class LinkedListDeque<T> {
     }
 
     public T removeFirst(){
-        if(setinel.next == null){
+        if(setinel.next.item == null){
             return null;
         } else {
             T val = (T) setinel.next.item;
-            if (setinel.next.next == null){
-                setinel.next = null;
-                setinel.pre = null;
+            if (setinel.next.next.item == null){
+                setinel.next = setinel;
+                setinel.pre = setinel;
             } else{
                 setinel.next = setinel.next.next;
-                setinel.next.next.pre = setinel;
+                setinel.next.pre = setinel;
             }
             this.size -= 1;
             return val;
@@ -74,11 +71,11 @@ public class LinkedListDeque<T> {
     }
 
     public T removeLast(){
-        if (setinel.pre == null){
+        if (setinel.pre.item == null){
             return null;
         } else {
             T val = (T) setinel.pre.item;
-            if (setinel.pre.pre == null){
+            if (setinel.pre.pre.item == null){
                 setinel.next = setinel;
                 setinel.pre = setinel;
             } else{
