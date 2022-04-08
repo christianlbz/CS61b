@@ -1,8 +1,8 @@
 public class ArrayDeque<T> {
     private int head = 0;
     private int tail = 0;
-    public T[] itemArray;
-    public int size = 0;
+    private T[] itemArray;
+    private int size = 0;
 
     public ArrayDeque(){
         this.itemArray = (T[])new Object[8];
@@ -36,7 +36,7 @@ public class ArrayDeque<T> {
 
     public void addLast(T item){
         if(((tail+1)% itemArray.length)==head){
-            System.out.println("The Deque is full.");
+            //System.out.println("The Deque is full.");
             this.addSize();
             this.itemArray[this.tail] = item;
             this.tail += 1;
@@ -121,7 +121,7 @@ public class ArrayDeque<T> {
         System.out.println(string);
     }
 
-    public void addSize(){
+    private void addSize(){
         int pair = this.itemArray.length - 1;
         T[] newArray = (T[]) new Object[(pair+1)*2+1];
         for(int i = 0;i<this.size;i++){
@@ -130,10 +130,10 @@ public class ArrayDeque<T> {
         this.itemArray = newArray;
         this.head = 0;
         this.tail = this.size;
-        System.out.println("Increment the size of Array.");
+        //System.out.println("Increment the size of Array.");
     }
 
-    public void reduceSize(){
+    private void reduceSize(){
         int pair = this.itemArray.length - 1;
         T[] newArray = (T[]) new Object[(pair-1)*2+1];
         for (int i = 0;i<this.size;i++){
@@ -142,7 +142,7 @@ public class ArrayDeque<T> {
         this.itemArray = newArray;
         this.head = 0;
         this.tail = this.size;
-        System.out.println("Decrease the size of the Array.");
+        //System.out.println("Decrease the size of the Array.");
     }
 
 }
