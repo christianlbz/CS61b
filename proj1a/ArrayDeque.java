@@ -14,7 +14,7 @@ public class ArrayDeque<T> {
 
     public void addFirst(T item){
         if (((tail+1)%itemArray.length) == head){
-            System.out.println("The Deque is full.");
+            //System.out.println("The Deque is full.");
             this.addSize();
             this.head = this.itemArray.length-1;
             this.itemArray[this.head] = item;
@@ -135,13 +135,13 @@ public class ArrayDeque<T> {
 
     private void reduceSize(){
         int pair = this.itemArray.length - 1;
-        T[] newArray = (T[]) new Object[(pair-1)*2+1];
-        for (int i = 0;i<this.size;i++){
+        T[] newArray = (T[]) new Object[(pair-1)/2+1];
+        for (int i = 0;i<=this.size;i++){
             newArray[i] = this.itemArray[(this.head+i)%this.itemArray.length];
         }
         this.itemArray = newArray;
         this.head = 0;
-        this.tail = this.size;
+        this.tail = this.size + 1;
         //System.out.println("Decrease the size of the Array.");
     }
 
