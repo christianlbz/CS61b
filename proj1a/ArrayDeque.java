@@ -66,7 +66,7 @@ public class ArrayDeque<T> {
                 this.head = 0;
             }
             this.size -= 1;
-            if (this.size < this.itemArray.length/2){
+            if (this.size < this.itemArray.length/2 && this.itemArray.length > 8){
                 this.reduceSize();
             }
             return temp;
@@ -89,7 +89,7 @@ public class ArrayDeque<T> {
                 this.itemArray[this.tail] = null;
             }
             this.size -= 1;
-            if (this.size < this.itemArray.length/2){
+            if (this.size < this.itemArray.length/2 && this.itemArray.length > 8){
                 this.reduceSize();
             }
             return temp;
