@@ -48,8 +48,9 @@ public class ArrayDeque<T> {
                 itemArray[0] = item;
                 this.tail = 0;
             }
-            this.size += 1;
+
         }
+        this.size += 1;
     }
 
     public T removeFirst(){
@@ -65,7 +66,7 @@ public class ArrayDeque<T> {
                 this.head = 0;
             }
             this.size -= 1;
-            if (this.size%7==0){
+            if (this.size < this.itemArray.length/2){
                 this.reduceSize();
             }
             return temp;
@@ -88,7 +89,7 @@ public class ArrayDeque<T> {
                 this.itemArray[this.tail] = null;
             }
             this.size -= 1;
-            if (this.size%7==0 && this.size != 0){
+            if (this.size < this.itemArray.length/2){
                 this.reduceSize();
             }
             return temp;
@@ -122,8 +123,8 @@ public class ArrayDeque<T> {
     }
 
     private void addSize(){
-        int pair = this.itemArray.length - 1;
-        T[] newArray = (T[]) new Object[(pair+1)*2+1];
+        int pair = this.itemArray.length;
+        T[] newArray = (T[]) new Object[pair*2];
         for(int i = 0;i<this.size;i++){
             newArray[i] = this.itemArray[(this.head+i)%this.itemArray.length];
         }
@@ -134,8 +135,8 @@ public class ArrayDeque<T> {
     }
 
     private void reduceSize(){
-        int pair = this.itemArray.length - 1;
-        T[] newArray = (T[]) new Object[(pair-1)/2+1];
+        int pair = this.itemArray.length;
+        T[] newArray = (T[]) new Object[(pair/2)];
         for (int i = 0;i<=this.size;i++){
             newArray[i] = this.itemArray[(this.head+i)%this.itemArray.length];
         }
