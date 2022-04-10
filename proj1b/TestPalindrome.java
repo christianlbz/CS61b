@@ -18,7 +18,6 @@ public class TestPalindrome {
 
     @Test
     public void testisPalindrome(){
-        Deque d1 = palindrome.wordToDeque("abccba");
         assertFalse(palindrome.isPalindrome("ax"));
 
         assertTrue(palindrome.isPalindrome("abccba"));
@@ -28,6 +27,12 @@ public class TestPalindrome {
         assertTrue(palindrome.isPalindrome("a"));
 
         assertTrue(palindrome.isPalindrome(""));
-
+        CharacterComparator ofo = new OffByOne();
+        assertTrue(palindrome.isPalindrome("",ofo));
+        assertTrue(palindrome.isPalindrome("a",ofo));
+        assertTrue(palindrome.isPalindrome("axxa",ofo));
+        assertTrue(palindrome.isPalindrome("abfba",ofo));
+        assertFalse(palindrome.isPalindrome("xqg",ofo));
+        assertFalse(palindrome.isPalindrome("xqhlwf",ofo));
     }
 }

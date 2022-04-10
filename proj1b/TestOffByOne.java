@@ -21,13 +21,4 @@ public class TestOffByOne {
     // Your tests go here.
     //Uncomment this class once you've created your CharacterComparator interface and OffByOne class. */
 
-    @Test
-    public void TestIsPalindrome(){
-        assertTrue(ofo.isPalindrome("",offByOne));
-        assertTrue(ofo.isPalindrome("a",offByOne));
-        assertTrue(ofo.isPalindrome("axxa",offByOne));
-        assertTrue(ofo.isPalindrome("abfba",offByOne));
-        assertFalse(ofo.isPalindrome("xqg",offByOne));
-        assertFalse(ofo.isPalindrome("xqhlwf",offByOne));
-    }
 }
