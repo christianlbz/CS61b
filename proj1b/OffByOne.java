@@ -12,37 +12,27 @@ public class OffByOne implements CharacterComparator{
         }
     }
 
-
-
-    public boolean isPalindrome(String word){
+    public boolean isPalindrome(String word, CharacterComparator f){
         Deque dq = new Palindrome().wordToDeque(word);
-        return  recursiveDeque(dq);
+        return  recursiveDeque(dq,f);
     }
 
-    public boolean recursiveDeque(Deque<Character> dq) {
+    public boolean recursiveDeque(Deque<Character> dq,CharacterComparator f) {
         if (dq.size() == 1 | dq.size() == 0) {
             return true;
         } else {
             char first = dq.get(0);
             char last = dq.get(dq.size() - 1);
             int diff = Math.abs(first - last);
-            if (diff == 0 | diff == 1) {
+            if (diff == 0 | f.equalChars(first, last)) {
                 dq.removeLast();
                 dq.removeFirst();
-                return recursiveDeque(dq);
+                return recursiveDeque(dq,f);
             } else {
                 return false;
             }
         }
     }
 
-    @Test
-    public void TestIsPalindrome(){
-        assertTrue(isPalindrome(""));
-        assertTrue(isPalindrome("a"));
-        assertTrue(isPalindrome("axxa"));
-        assertTrue(isPalindrome("abfba"));
-        assertFalse(isPalindrome("xqg"));
-        assertFalse(isPalindrome("xqhlwf"));
-    }
+
 }
