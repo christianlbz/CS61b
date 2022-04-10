@@ -27,6 +27,7 @@ public class TestPalindrome {
         assertTrue(palindrome.isPalindrome("a"));
 
         assertTrue(palindrome.isPalindrome(""));
+
         CharacterComparator ofo = new OffByOne();
         assertTrue(palindrome.isPalindrome("",ofo));
         assertTrue(palindrome.isPalindrome("a",ofo));
